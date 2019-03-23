@@ -25,7 +25,8 @@ int main()
 	{
 		std::cout<<"the text file with map configurations was not read..."<<std::endl;
 		std::cout<<"press any key to exit";
-		return 0
+		std::cin>>w;
+		return 0;
 	}
 	input.close();
 	std::cout << "enter the number of the animals expected...   ";
