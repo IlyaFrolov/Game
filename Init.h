@@ -67,6 +67,16 @@ public:
 		std::cin >> w;
 	}
 	int get_num(){ return n; };
+	void render(float time1)
+	{
+		(*window).clear();
+		(*m).render((*window));
+		(*Mouse).move(time1, *(window), *(m));
+		(*Lion).move(time1, *(window), *(m));
+		(*Lion).render((*window));
+		(*Mouse).render((*window), (*m));
+		(*window).display();
+	}
 	
 
 };

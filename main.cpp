@@ -10,10 +10,7 @@
 int main()
 {
 	Init init;
-	char buffer[30];
-	int w;
-	int n;
-	String g[25];
+	
 	
 	
 	
@@ -30,13 +27,7 @@ int main()
 				(*(init.window)).close();
 		}
 
-		(*(init.window)).clear();
-		(*(init.m)).render((*(init.window)));
-		(*(init.Mouse)).move(time1, *(init.window), *(init.m));
-		(*(init.Lion)).move(time1, *(init.window), *(init.m));
-		(*(init.Lion)).render((*(init.window)));
-		(*(init.Mouse)).render(*(init.window), *(init.m));
-		(*(init.window)).display();
+		init.render(time1);
 		
 	}
 	return 0;
