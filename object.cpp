@@ -10,7 +10,9 @@ object::object(float _x, float _y, String path)
 	object_image.createMaskFromColor(Color(255, 255, 255));
 	object_texture.loadFromImage(object_image);
 	object_sprite.setTexture(object_texture);
-	object_sprite.setTextureRect(IntRect(100, 0, 100, 100));
+	width = (object_image.getSize().x) / 3;
+	height = (object_image.getSize().y) / 4;
+	object_sprite.setTextureRect(IntRect(width, 0, width, height));
 	object_sprite.setPosition(300, 300);
 	up = 0;
 	down = 0;
@@ -21,8 +23,6 @@ object::object(float _x, float _y, String path)
 	g = 1;
 	k = 1;
 	sprite_speed = speed / 20;
-	width = (object_image.getSize().x) / 3;
-	height = (object_image.getSize().y) / 4;
 
 };
 float object::get_x()
