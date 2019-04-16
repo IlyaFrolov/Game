@@ -9,6 +9,7 @@ using namespace sf;//SFML namespace
 class object
 {
 private:
+	float q = 300;
 	float width;
 	float height;
 	float x; //initial coordinates
@@ -25,8 +26,10 @@ private:
 	float speed; 
 	int count;
 	float sprite_speed;
+protected:
+	int flag = 1;
 public:
-	object(float _x, float _y, String path);
+	object(float _x, float _y, String path, float _q);
 	float get_x();
 	float get_y();
 	float get_speed();
@@ -36,6 +39,7 @@ public:
 
 	float get_width();//sprite width in pixels 
 	float get_height();//sprite height in pixels
+	int get_flag() { return flag; };
 
 
 };

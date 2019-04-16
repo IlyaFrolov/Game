@@ -9,6 +9,7 @@ class object;
 class map
 {
 private:
+	int num;
 	String arr[25];
 	Image map_image;
 	Texture map_texture;
@@ -26,6 +27,7 @@ public:
 	int* isAllowed(RenderWindow & window, float x, float y, float dx, float dy);
 	char get_square_type(int X, int Y);
 	char get_place(float x, float y);
-	int isAny(float x, float y, float R);
+	int isAny(float x, float y, float R, int h);
+	int count();
 };
 #endif //MAP_INCLUDED

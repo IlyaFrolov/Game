@@ -11,15 +11,17 @@
 class Init
 {
 private:
+	int co;
 	char buffer[30];
 	int w;
 	int n;
-public:
+	int h;
 	map* m;
-	mouse* Mouse;
+	mouse** Mouse;
 	lion* Lion;
-	sf::RenderWindow* window;
 	String g[25];
+public:
+	sf::RenderWindow* window;
 	Init()
 	{
 		std::ifstream input("map.txt");
@@ -41,19 +43,23 @@ public:
 		std::cout << "enter the number of the animals expected...   ";
 		std::cin >> n;
 		window = new sf::RenderWindow(sf::VideoMode(900, 900), "Lesson 1. kychka-pc.ru");
-		Mouse=new mouse(300, 300, "mouse.png");
-		Lion=new lion(300, 300, "LionNice.png");
+		Mouse = new  mouse*[n - 1];
+		for (int i = 0; i < n - 1;i++) Mouse[i]=new mouse(300, 300, "mouse.png", 20);
+		Lion=new lion(300, 300, "LionNice.png", 300);
 		m = new map(g, n);
-		if ((*m).reg(&(*Lion)))
+		for (int i = 0; i < n - 1; i++)
 		{
-			std::cout << "the object has been registrated successfully..." << std::endl;
+			if ((*m).reg(&(*(Mouse[i]))))
+			{
+				std::cout << "the object has been registrated successfully..." << std::endl;
+			}
+			else
+			{
+				std::cout << "the error ocurred... enter any number to exit..." << std::endl;
+				std::cin >> w;
+			};
 		}
-		else
-		{
-			std::cout << "the error ocurred... enter any number to exit..." << std::endl;
-			std::cin >> w;
-		};
-		if ((*m).reg(&(*Mouse)))
+		if ((*m).reg(&(*Lion)))
 		{
 			std::cout << "the object has been registrated successfully..." << std::endl;
 		}
@@ -65,17 +71,19 @@ public:
 		std::cout << "all the players have been registrated successfully..." << std::endl;
 		std::cout << "enter any number to start the game..." << std::endl;
 		std::cin >> w;
+		h = n - 1;
 	}
 	int get_num(){ return n; };
 	void render(float time1)
 	{
 		(*window).clear();
 		(*m).render((*window));
-		(*Mouse).move(time1, *(window), *(m));
+		for (int i = 0; i < n - 1;i++) (*(Mouse[i])).move(time1, *(window), *(m), h);
 		(*Lion).move(time1, *(window), *(m));
 		(*Lion).render((*window));
-		(*Mouse).render((*window), (*m));
+		for (int i = 0; i < n - 1; i++) (*(Mouse[i])).render((*window), (*m));
 		(*window).display();
+		std::cout << m->count();
 	}
 	
 

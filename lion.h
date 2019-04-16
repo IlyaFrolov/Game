@@ -14,7 +14,7 @@ private:
 	float speed;
 public:
 	virtual void render(RenderWindow & window);
-	lion(float _x, float _y, String path);
+	lion(float _x, float _y, String path, float q);
 	void move(float t, RenderWindow & window, map & m);
 };
 #endif

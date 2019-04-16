@@ -37,7 +37,7 @@ void lion::move(float time, RenderWindow & window, map & m)//directing the lion 
 	(object::get_sprite()).move(dx, dy);
 
 };
-lion::lion(float _x, float _y, String path) :object(_x, _y, path)
+lion::lion(float _x, float _y, String path, float q) :object(_x, _y, path, q)
 {
 	speed = 0.4;
 };

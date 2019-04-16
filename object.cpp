@@ -2,7 +2,7 @@
 #include "object.h"
 #include <iostream>
 
-object::object(float _x, float _y, String path)
+object::object(float _x, float _y, String path, float _q)
 {
 	x = _x;
 	y = _y;
@@ -13,7 +13,8 @@ object::object(float _x, float _y, String path)
 	width = (object_image.getSize().x) / 3;
 	height = (object_image.getSize().y) / 4;
 	object_sprite.setTextureRect(IntRect(width, 0, width, height));
-	object_sprite.setPosition(300, 300);
+	q = _q;
+	object_sprite.setPosition(q, q);
 	up = 0;
 	down = 0;
 	right = 0;

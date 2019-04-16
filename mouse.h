@@ -19,8 +19,8 @@ private:
 	int p;
 public:
 	virtual void render(RenderWindow & window, map & m);
-	mouse(float _x, float _y, String path);
-	void move(float t, RenderWindow & window, map & m);
+	mouse(float _x, float _y, String path, float q);
+	void move(float t, RenderWindow & window, map & m, int h);
 
 
 };

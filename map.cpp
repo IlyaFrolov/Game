@@ -77,17 +77,27 @@ char map::get_place(float x, float y)//says whether there is floor or armchair
 {
 	return arr[(int)(y / 100)][(int)(x / 100)];
 };
-int map::isAny(float x, float y, float R) //indicates the presence of other objects within the radius R
+int map::isAny(float x, float y, float R, int h) //indicates the presence of other objects within the radius R
 {
 	float x1;
 	float y1;
 	float b;
-	for (int q = 0; q < store_size; q++)
+	for (int q = h-1; q < store_size; q++)
 	{
 		x1 = (store[q])->get_x();
 		y1 = (store[q])->get_y();
 		b = sqrt((x - x1)*(x - x1) + (y - y1)*(y - y1));
+		if (b>0 && b < 10) return 2;
 		if (b>0 && b < R) return 1;
 	}
 	return 0;
+}
+int map::count()
+{
+	int r = 0;
+	for (int i = 0; i < store_size - 1; i++)
+	{
+		if (((store[i])->get_flag()) == 1) r += 1;
+	}
+	return r;
 }
