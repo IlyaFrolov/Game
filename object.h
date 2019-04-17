@@ -36,7 +36,6 @@ public:
 	Sprite & get_sprite();
 	void sprite_update(float dx, float dy, float time);
 	virtual void render(RenderWindow & window);
-
 	float get_width();//sprite width in pixels 
 	float get_height();//sprite height in pixels
 	int get_flag() { return flag; };

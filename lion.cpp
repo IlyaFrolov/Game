@@ -2,7 +2,7 @@
 #include "map.h"
 #include "object.h"
 
-void lion::render(RenderWindow & window)
+void lion::render(RenderWindow & window, map & m)
 {
 	object::render(window);
 };

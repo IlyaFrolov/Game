@@ -16,10 +16,10 @@ mouse::mouse(float _x, float _y, String path, float q) :object(_x, _y, path, q)
 	p = 1;
 	flag = 1;
 };
-void mouse::move(float t, RenderWindow & window, map & m, int h)//the function of wandering within the map
+void mouse::move(float t, RenderWindow & window, map & m)//the function of wandering within the map
 {
 	int* i = NULL;
-	int q = m.isAny(object::get_x(), object::get_y(), vision, h);
+	int q = m.isAny(object::get_x(), object::get_y(), vision);
 	if (q != 2)
 	{
 		if (q == 0)
@@ -32,7 +32,7 @@ void mouse::move(float t, RenderWindow & window, map & m, int h)//the function o
 				g = 1;
 				k = rand() % 100;
 				if (k > 75 || k < 25) g = -1;
-				std::cout << k << std::endl;
+				
 				if (k >= 50) k = -1;
 				else k = 1;
 				dx = sqrt(rand() % 100);
@@ -62,7 +62,7 @@ void mouse::move(float t, RenderWindow & window, map & m, int h)//the function o
 		};
 		i = m.isAllowed(window, (object::get_sprite()).getPosition().x, (object::get_sprite()).getPosition().y, k*dx*speed*t, g*dy*speed*t);
 		if (i[0] == 0 || i[1] == 0) count = 0;
-		if (m.isAny(object::get_x(), object::get_y(), vision, h))
+		if (m.isAny(object::get_x(), object::get_y(), vision))
 		{
 			if (i[0] > 0) dy = 0;
 			else dx = 0;

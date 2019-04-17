@@ -27,7 +27,7 @@ int main()
 				(*(init.window)).close();
 		}
 
-		init.render(time1);
+		(init.m)->render(time1);
 		
 	}
 	return 0;
